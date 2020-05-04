@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from "./components/NavBar";
+import { Prompt, Redirect } from 'react-router-dom';
 
-function App() {
+import { Router, Switch } from "react-router-dom";
+import history from "./utils/history";
+import PrivateRoute from "./components/PrivateRoute";
+import AuctionsPage from './pages/AuctionsPage';
+import CreateAuctionPage from './pages/CreateAuctionPage';
+import LoadingSpinner from './components/LoadingSpinner';
+import { inject, observer } from 'mobx-react';
+
+const App = (props) => {
+  const { overlayStore } = props;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <LoadingSpinner display={overlayStore.displaySpinner} />
+      <Router history={history}>
+        <header>
+          <NavBar />
+        </header>
+        <Switch>
+          <PrivateRoute path="/" render={() => (
+            <Redirect to="/auctions" />
+          )} exact />
+          <PrivateRoute path="/auctions" component={AuctionsPage} />
+          <PrivateRoute path="/create" component={CreateAuctionPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
 
-export default App;
+export default inject('overlayStore')(observer(App));
