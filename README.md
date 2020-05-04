@@ -28,6 +28,10 @@ Create a `.env` file in the root folder of this project. You need to specify two
 
 * `REACT_APP_AUCTIONS_ENDPOINT`: Your Auction Service API endpoint.
 
+* `REACT_APP_AUTH0_DOMAIN`: Your Auth0 application domain.
+
+* `REACT_APP_AUTH0_CLIENT_ID`: Your Auth0 application client ID.
+
 For an example, you can take a look at the [.env.example](.env.example) file in this repository.
 
 ## Running the application
