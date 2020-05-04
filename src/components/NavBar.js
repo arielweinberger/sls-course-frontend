@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     marginBottom: 24,
     display: 'flex',
     width: '100%',
-    // justifyContent: 'flex-end',
     boxSizing: 'border-box',
   },
   header: {
@@ -57,7 +56,6 @@ const NavBar = ({ authStore }) => {
           >
             Sign out
           </Button>
-          // {{authStore.claims.email}}
         )}
       </div>
     </div>

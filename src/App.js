@@ -21,9 +21,7 @@ const App = (props) => {
           <NavBar />
         </header>
         <Switch>
-          <PrivateRoute path="/" render={() => (
-            <Redirect to="/auctions" />
-          )} exact />
+          <PrivateRoute path="/" exact component={AuctionsPage} />
           <PrivateRoute path="/auctions" component={AuctionsPage} />
           <PrivateRoute path="/create" component={CreateAuctionPage} />
         </Switch>
