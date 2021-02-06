@@ -46,7 +46,7 @@ const AuctionsPage = (props) => {
         if (routerHistory.location.pathname === '/auctions' || routerHistory.location.pathname === '/') {
           auctionStore.fetchAuctions();
         }
-      }, process.env.REACT_APP_REFRESH_RATE);
+      }, process.env.REACT_APP_REFRESH_RATE * 1000);
     })();
   }, [auctionStore, routerHistory]);
 
